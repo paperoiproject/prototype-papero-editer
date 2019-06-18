@@ -1,0 +1,64 @@
+.EditScenario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 3vh;
+}
+.AppAddScene{
+  width: 50vw;
+}
+.TestChRow{
+    width: 50vw;
+    height: 10vh;
+    display: flex;
+    justify-content: "space-around";
+}
+
+.RealTimeTable{
+  height: 50vh;
+}
+.RealTimeTable__button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.TestChannel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 3vh;
+}
+
+.ScenarioList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

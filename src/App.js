@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { Switch, BrowserRouter, Route, Link } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import store from './Store/Store.js';
+
+import AppTab from './View/AppComponent/AppTab.js'
+
+import EditScenario from './View/AppPage/EditScenario.js'
+import DisplayScenario from './View/AppPage/DisplayScenario.js'
+import TestChannel from './View/AppPage/TestChannel.js'
+import TimeTablePage from './View/AppPage/TimeTablePage.js'
+import RealTimeTable from './View/AppPage/RealTimeTable.js'
+
+
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <AppTab />
+          <Provider store={store}>
+            <Switch>
+              <Route exact path='/' component={DisplayScenario} />
+              <Route exact path='/addscenario' component={EditScenario} />
+              <Route exact path='/timetable' component={TimeTablePage} />
+              <Route exact path='/realtime' component={RealTimeTable} />
+              <Route exact path='/test' component={TestChannel} />
+            </Switch>
+          </Provider>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
