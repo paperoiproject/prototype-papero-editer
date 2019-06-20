@@ -10,11 +10,22 @@ class AppLists extends Component {
   render() {
     return (
       <div className="Lists">
-        {this.props.items.map((item, index) => {
+        {this.props.itemsForTimeTable.map((item, index) => {
           return (
             <ViewLists
-              image={item.image}
-              name={item.name}
+              item={item}
+              onEvent={() => {
+                this.props.handleDialog(item.name, item.details);
+              }}
+              onClick={() => {
+                if(this.props.call === "TimeTablePage"){
+                  this.props.switchList(index);
+                }
+                else{
+                  this.props.deleteList(index);
+                }
+              }}
+              call={this.props.call}
             />
           );
         })}

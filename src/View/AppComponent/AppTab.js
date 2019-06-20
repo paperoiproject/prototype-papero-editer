@@ -36,7 +36,7 @@ const AppTab = (props) => {
   }
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Tabs variant="fullWidth" value={value} onChange={handleChange}>
           <LinkTab label="シナリオ一覧" value="/"/>
           <LinkTab label="シナリオの追加" value="/addscenario" />

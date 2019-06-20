@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import "../App.css";
 
 import AppScenarioList from "../AppComponent/AppScenarioList.js";
+import AppScenarioDialog from "../AppComponent/AppScenarioDialog.js";
+
 
 import item1 from "../img/食パン_2食.jpg";
 import item2 from "../img/オレンジデニッシュ.jpg";
@@ -25,73 +27,102 @@ class DisplayScenario extends Component {
         {
           image: item1,
           name: "食パン 2食分",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item2,
           name: "オレンジデニッシュ",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item3,
           name: "パンコンプレ プレーン",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item4,
           name: "バイツェンミッシュブロート",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item5,
           name: "オニオンフランス",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item6,
           name: "ソーセージフランス",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item7,
           name: "ローストポーククロワッサンサンド",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item8,
           name: "キングコッペ ブルーベリーバター",
-          details: [
-
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item9,
           name: "マフィン プレーン",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item10,
           name: "フルーツデニッシュ",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item11,
           name: "モダン焼き",
-          details: []
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item12,
           name: "ソフトフランスのベーコンキッシュ",
-          details: []
+          details: ["A", "B", "C", "D"]
         }
       ],
+      modal_state: {
+        flag: false,
+        name: "",
+        details: []
+      }
     };
   }
 
+  handleDialog(name, details) {
+    let obj = Object.assign({}, this.state.modal_state);
+    if(obj.flag){
+      obj.flag = false;
+    }else{
+      obj.flag = true;
+      obj.name = name;
+      obj.details = details
+    }
+    this.setState({
+      modal_state: obj,
+    });
+  }
+
   render() {
+    console.log(this.state.modal_state);
     return (
       <div className="DisplayScenario">
-        <AppScenarioList items={this.state.items}/>
+       <AppScenarioDialog
+          modal_state={this.state.modal_state}
+          onClose={() => {
+            this.handleDialog();
+          }}
+        />
+        <AppScenarioList
+          items={this.state.items}
+          handleDialog={(name, details) => {
+            this.handleDialog(name, details);
+          }}
+        />
       </div>
     );
   }

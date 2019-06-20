@@ -11,7 +11,7 @@ const ScenarioList = (props) => {
             image={item.image}
             name={item.name}
             onClick={() => {
-              props.cardClick(item.name, item.details);
+              props.handleDialog(item.name, item.details);
             }} />
         );
       })}

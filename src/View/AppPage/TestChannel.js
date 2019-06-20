@@ -10,7 +10,7 @@ class TestChannel extends Component {
     try{
       let obj = {work: work}
       console.log(JSON.stringify(obj))
-      let data = await fetch("https://1a1fd639.ngrok.io/",{
+      let data = await fetch("https://d5340bc4.ngrok.io",{
         method: 'POST',
         mode: "cors",
         headers: {

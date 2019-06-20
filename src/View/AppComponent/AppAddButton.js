@@ -33,7 +33,7 @@ const AppAddButton = props => {
             color="default"
             aria-label="Add"
             onClick={e => {
-              props.onClick(e);
+              props.handleAddDialog(e);
             }}
           >
             <AddIcon />

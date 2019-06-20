@@ -10,7 +10,12 @@ class AppScenarioList extends Component {
     return (
       <div className="">
         <ScenarioList
-          items={this.props.items} />
+          items={this.props.items}
+          handleDialog={(name, details) => {
+            console.log(name);
+            this.props.handleDialog(name, details);
+          }}
+        />
       </div>
     );
   }

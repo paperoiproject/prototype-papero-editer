@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
-import AppLists from "../AppComponent/AppList.js";
+import AppList from "../AppComponent/AppList.js";
+import AppScenarioDialog from "../AppComponent/AppScenarioDialog.js";
+import AppAddDialog from "../AppComponent/AppAddDialog.js";
+
 import AppAddButton from "../AppComponent/AppAddButton.js";
-import AppUnderBar from "../AppComponent/AppUnderBar.js";
 
 import item1 from "../img/食パン_2食.jpg";
 import item2 from "../img/オレンジデニッシュ.jpg";
@@ -25,159 +27,172 @@ class RealTimeTable extends Component {
         {
           image: item1,
           name: "食パン 2食分",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item2,
           name: "オレンジデニッシュ",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item3,
           name: "パンコンプレ プレーン",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item4,
           name: "バイツェンミッシュブロート",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item5,
           name: "オニオンフランス",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item6,
           name: "ソーセージフランス",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item7,
           name: "ローストポーククロワッサンサンド",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item8,
           name: "キングコッペ ブルーベリーバター",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item9,
           name: "マフィン プレーン",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item10,
           name: "フルーツデニッシュ",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item11,
           name: "モダン焼き",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item12,
           name: "ソフトフランスのベーコンキッシュ",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         }
       ],
-      titleBarName: "PaPeRo Editor",
       itemsForTimeTable: [
         {
-          image: item3,
-          name: "パンコンプレ プレーン",
-          details: [
-          ]
-        },
-        {
-          image: item4,
-          name: "バイツェンミッシュブロート",
-          details: [
-          ]
-        },
-        {
-          image: item7,
-          name: "ローストポーククロワッサンサンド",
-          details: [
-          ]
-        },
-        {
-          image: item8,
-          name: "キングコッペ ブルーベリーバター",
-          details: [
-          ]
-        }
-      ],
-      itemsForAutoSuggestion: [
-        {
-          image: item8,
-          name: "キングコッペ ブルーベリーバター",
-          details: [
-          ]
-        },
-        {
-          image: item9,
-          name: "マフィン プレーン",
-          details: [
-          ]
-        },
-        {
           image: item10,
           name: "フルーツデニッシュ",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item11,
           name: "モダン焼き",
-          details: [
-          ]
+          details: ["A", "B", "C", "D"]
         },
         {
           image: item12,
           name: "ソフトフランスのベーコンキッシュ",
-          details: [
-          ]
-        }
+          details: ["A", "B", "C", "D"]
+        },
       ],
-      value: ""
+      modal_state: {
+        flag: false,
+        name: "",
+        details: []
+      },
+      flag: false,
     };
   }
+  handleDialog(name, details){
+    let obj = Object.assign({}, this.state.modal_state);
+    if(obj.flag){
+      obj.flag = false;
+    }else{
+      obj.flag = true;
+      obj.name = name;
+      obj.details = details
+    }
+    this.setState({
+      modal_state: obj,
+    });
+  }
+
+  handleAddDialog(){
+    this.setState({
+      flag: !this.state.flag,
+    });
+  }
+
+  addList(item) {
+    console.log(item)
+    let index = this.state.items.findIndex(temp => temp.name === item.name);
+    let temp_items = this.state.itemsForTimeTable;
+    temp_items.push(this.state.items[index]);
+    this.setState({
+      itemsForTimeTable: temp_items
+    });
+  }
+
+  deleteList(index) {
+    let temp_items = this.state.itemsForTimeTable.slice();
+    temp_items.splice(index, 1);
+    this.setState({
+      itemsForTimeTable: temp_items
+    });
+  }
+
+  displayAddDialog(){
+    if(this.state.flag){
+      return(
+        <AppAddDialog
+          items={this.state.items}
+          open={this.state.flag}
+          onClose={() => {
+           this.handleAddDialog();
+          }}
+          addList={(item) => {
+            this.addList(item);
+            this.handleAddDialog();
+          }}
+        />
+      )
+    }else{
+      return "";
+    }
+  }
+
 
   render() {
+    console.log(this.state)
     return (
-      <div className="">
-        <div className = "RealTimeTable">
-          <AppLists
-            items={this.state.itemsForAutoSuggestion}
-            itemsForTimeTable={this.state.itemsForTimeTable}
-            deleteList={index => {
-              this.props.deleteList(index);
-             }}
-            detailList={(name, details) => {
-              this.props.detailList(name, details);
-              this.handleClickFlag2();
-            }}
-          />
-          <div className="RealTimeTable__button">
-            <AppUnderBar />
-          </div>
-        </div>
-        <AppAddButton/>
+      <div className="RealTimeTable">
+        <AppScenarioDialog
+          modal_state={this.state.modal_state}
+          onClose={() => {
+            this.handleDialog();
+          }}
+        />
+        {this.displayAddDialog()}
+        <AppList
+          itemsForTimeTable={this.state.itemsForTimeTable}
+          handleDialog={(name, details) => {
+            this.handleDialog(name, details);
+          }}
+          deleteList={index => this.deleteList(index)}
+          call={"RealTimeTable"}
+        />
+        <AppAddButton
+          handleAddDialog={() => {
+            this.handleAddDialog();
+          }}
+        />
       </div>
     );
   }
