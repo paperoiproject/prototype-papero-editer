@@ -35,55 +35,20 @@ class DisplayScenario extends Component {
           details: ["A", "B", "C", "D"]
         },
         {
-          image: item3,
-          name: "パンコンプレ プレーン",
+          image: item2,
+          name: "オレンジデニッシュ",
           details: ["A", "B", "C", "D"]
         },
         {
-          image: item4,
-          name: "バイツェンミッシュブロート",
+          image: item2,
+          name: "オレンジデニッシュ",
           details: ["A", "B", "C", "D"]
         },
         {
-          image: item5,
-          name: "オニオンフランス",
+          image: item2,
+          name: "オレンジデニッシュ",
           details: ["A", "B", "C", "D"]
         },
-        {
-          image: item6,
-          name: "ソーセージフランス",
-          details: ["A", "B", "C", "D"]
-        },
-        {
-          image: item7,
-          name: "ローストポーククロワッサンサンド",
-          details: ["A", "B", "C", "D"]
-        },
-        {
-          image: item8,
-          name: "キングコッペ ブルーベリーバター",
-          details: ["A", "B", "C", "D"]
-        },
-        {
-          image: item9,
-          name: "マフィン プレーン",
-          details: ["A", "B", "C", "D"]
-        },
-        {
-          image: item10,
-          name: "フルーツデニッシュ",
-          details: ["A", "B", "C", "D"]
-        },
-        {
-          image: item11,
-          name: "モダン焼き",
-          details: ["A", "B", "C", "D"]
-        },
-        {
-          image: item12,
-          name: "ソフトフランスのベーコンキッシュ",
-          details: ["A", "B", "C", "D"]
-        }
       ],
       modal_state: {
         flag: false,
