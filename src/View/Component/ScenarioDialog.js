@@ -9,12 +9,27 @@ import DialogContent from "@material-ui/core/DialogContent";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
 import Button from "@material-ui/core/Button";
 
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+
 const styles = theme => ({
-  root: {}
+  root: {},
+  button1:{
+    display:'flex',
+    flexGrow: 2
+  }
 });
+
+const inner = (
+  <Box
+    bgcolor="background.paper"
+    m={1}
+    borderColor="text.primary"
+    style={{ width: '5rem', height: '10rem' }}
+  />
+);
 
 const ScenarioDialog = props => {
   const { classes } = props;
@@ -36,12 +51,18 @@ const ScenarioDialog = props => {
             </List>
           </DialogContent>
           <DialogActions>
-            <Button onClick={e => props.onClose()} color="primary">
-              Back
+            <Button className='button1' onClick={e => props.onClose()} color="primary">
+              戻る
             </Button>
-            <Button onClick={e => props.onOpen()} color="primary">
-              Edit
+            <Box borderRight={1} clone borderRadius="0%" height='0%'>
+              <Button className='button1' onClick={e => props.onOpen()} color="primary">
+              編集
+              </Button>
+            </Box>
+            <Button className='button1' onClick={e => props.onOpen()} color="primary">
+              リアルタイムテーブルから消す
             </Button>
+
           </DialogActions>
         </Dialog>
       </div>

@@ -51,14 +51,7 @@ const selectBotton = props => {
   else if (props.call === "RealTimeTable") {
     return (
       <ListItemSecondaryAction>
-        <IconButton
-          edge="end"
-          onClick={e => {
-            props.onClick(e);
-          }}
-        >
-          <DeleteIcon />
-        </IconButton>
+        
       </ListItemSecondaryAction>
     );
   }

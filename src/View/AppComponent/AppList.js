@@ -21,9 +21,7 @@ class AppLists extends Component {
                 if(this.props.call === "TimeTablePage"){
                   this.props.switchList(index);
                 }
-                else{
-                  this.props.deleteList(index);
-                }
+              
               }}
               call={this.props.call}
             />
