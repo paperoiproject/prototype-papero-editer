@@ -185,7 +185,7 @@ class RealTimeTable extends Component {
           handleDialog={(name, details) => {
             this.handleDialog(name, details);
           }}
-          deleteList={index => this.deleteList(index)}
+
           call={"RealTimeTable"}
         />
         <AppAddButton
