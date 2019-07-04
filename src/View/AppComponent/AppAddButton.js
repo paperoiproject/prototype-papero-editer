@@ -9,6 +9,7 @@ import AddIcon from "@material-ui/icons/Add";
 const style = theme => ({
   root: {},
   appBar: {
+    top:'auto',
     bottom: 0
   },
   fabButton: {
@@ -22,7 +23,7 @@ const style = theme => ({
 });
 
 const AppAddButton = props => {
-  const  classes  = props;
+  const  {classes}  = props;
   return (
     <div className={classes.root}>
       <AppBar position="fixed" color="default" className={classes.appBar}>
