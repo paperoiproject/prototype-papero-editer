@@ -19,6 +19,9 @@ import item10 from "../img/フルーツデニッシュ.jpg";
 import item11 from "../img/モダン焼き.jpg";
 import item12 from "../img/ソフトフランスのベーコンキッシュ.jpg";
 
+import { Container, Draggable } from 'react-smooth-dnd';
+import { applyDrag, generateItems } from './utils';
+
 class RealTimeTable extends Component {
   constructor(props) {
     super(props);
@@ -168,6 +171,9 @@ class RealTimeTable extends Component {
     }
   }
 
+  setSta(e){
+    this.setState({itemsForTimeTable: applyDrag(this.state.itemsForTimeTable, e) })
+  }
 
   render() {
     console.log(this.state)
@@ -185,6 +191,7 @@ class RealTimeTable extends Component {
           handleDialog={(name, details) => {
             this.handleDialog(name, details);
           }}
+          setSta={(e)=>{this.setSta(e)}}
 
           call={"RealTimeTable"}
         />
