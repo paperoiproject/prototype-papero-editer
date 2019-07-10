@@ -60,7 +60,7 @@ const ScenarioDialog = props => {
               </Button>
             </Box>
             <Button className='button1' onClick={e => props.onOpen()} color="primary">
-              リアルタイムテーブルから消す
+              {props.mode}
             </Button>
 
           </DialogActions>

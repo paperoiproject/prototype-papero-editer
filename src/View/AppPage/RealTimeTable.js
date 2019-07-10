@@ -164,6 +164,13 @@ class RealTimeTable extends Component {
             this.addList(item);
             this.handleAddDialog();
           }}
+
+          deleteList={(index) => {
+            this.deleteList(index)
+            this.handleAddDialog()
+          }
+
+          }
         />
       )
     }else{
@@ -181,9 +188,17 @@ class RealTimeTable extends Component {
       <div className="RealTimeTable">
         <AppScenarioDialog
           modal_state={this.state.modal_state}
+
           onClose={() => {
             this.handleDialog();
           }}
+
+          onOpen={() => {
+            this.deleteList()
+            this.handleDialog();
+          }}
+
+          mode='リアルタイムからから消す'
         />
         {this.displayAddDialog()}
         <AppList

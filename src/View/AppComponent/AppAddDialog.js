@@ -38,6 +38,9 @@ class AppAddDialog extends Component {
           addList={(item)=>{
             this.props.addList(item);
           }}
+          deleteList={(index)=>
+            this.props.deleteList(index)
+          }
         />
       </div>
     );

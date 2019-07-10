@@ -49,6 +49,7 @@ class DisplayScenario extends Component {
           name: "オレンジデニッシュ",
           details: ["A", "B", "C", "D"]
         },
+
       ],
       modal_state: {
         flag: false,
@@ -56,6 +57,15 @@ class DisplayScenario extends Component {
         details: []
       }
     };
+  }
+
+
+  deleteList(index) {
+    let temp_items = this.state.items.slice();
+    temp_items.splice(index, 1);
+    this.setState({
+      items: temp_items
+    });
   }
 
   handleDialog(name, details) {
@@ -81,6 +91,11 @@ class DisplayScenario extends Component {
           onClose={() => {
             this.handleDialog();
           }}
+          onOpen={() => {
+            this.deleteList()
+            this.handleDialog();
+          }}
+          mode='シナリオから消す'
         />
         <AppScenarioList
           items={this.state.items}
