@@ -13,6 +13,10 @@ class AppScenarioDialog extends Component {
           onClose={() => {
             this.props.onClose();
           }}
+          onOpen={() => {
+            this.props.onOpen();
+          }}
+          mode={this.props.mode}
         />
       </div>
     );

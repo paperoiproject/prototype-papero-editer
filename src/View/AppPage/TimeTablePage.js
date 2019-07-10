@@ -227,6 +227,11 @@ class TimeTablePage extends Component {
           onClose={() => {
             this.handleDialog();
           }}
+          onOpen={() => {
+            this.deleteList()
+            this.handleDialog();
+          }}
+          mode='タイムテーブルから消す'
         />
         {this.displayAddDialog()}
         <AppList
