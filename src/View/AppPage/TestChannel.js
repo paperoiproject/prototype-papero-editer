@@ -24,6 +24,8 @@ class TestChannel extends Component {
      console.log(e)
     }
   }
+
+
   render() {
     return (
       <div className="TestChannel">

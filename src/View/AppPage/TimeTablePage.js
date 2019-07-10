@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import AppList from "../AppComponent/AppList.js";
 import AppScenarioDialog from "../AppComponent/AppScenarioDialog.js";
 import AppAddDialog from "../AppComponent/AppAddDialog.js";
-
 import AppAddButton from "../AppComponent/AppAddButton.js";
+
 
 import item1 from "../img/食パン_2食.jpg";
 import item2 from "../img/オレンジデニッシュ.jpg";
@@ -19,7 +18,34 @@ import item10 from "../img/フルーツデニッシュ.jpg";
 import item11 from "../img/モダン焼き.jpg";
 import item12 from "../img/ソフトフランスのベーコンキッシュ.jpg";
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import FolderIcon from '@material-ui/icons/Folder';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import { Container, Draggable } from 'react-smooth-dnd';
+import { applyDrag, generateItems } from './utils';
+
+
+const useStyles = makeStyles=>({
+  root: {
+    flexGrow: 1,
+    maxWidth: 752,
+  },
+  demo: {
+  },
+  title: {
+  },
+});
+
+
 class TimeTablePage extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -113,6 +139,8 @@ class TimeTablePage extends Component {
       flag: false,
     };
   }
+
+
   handleDialog(name, details){
     let obj = Object.assign({}, this.state.modal_state);
     if(obj.flag){
@@ -178,6 +206,18 @@ class TimeTablePage extends Component {
   }
 
 
+  generate(element) {
+    return [0].map(value =>
+      React.cloneElement(element, {
+        key: value,
+      }),
+    );
+  }
+
+  setSta(e){
+    this.setState({itemsForTimeTable: applyDrag(this.state.itemsForTimeTable, e) })
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -195,6 +235,7 @@ class TimeTablePage extends Component {
             this.handleDialog(name, details);
           }}
           switchList={(index) => {this.switchList(index)}}
+          setSta={(e) => {this.setSta(e)}}
           call={"TimeTablePage"}
         />
         <AppAddButton
